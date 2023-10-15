@@ -1,6 +1,6 @@
 {
   "name": "@fairfooddata/types",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "TS types for Fair Food Data",
   "author": "Szabolcs Szekelyi",
   "license": "UNLICENSED",

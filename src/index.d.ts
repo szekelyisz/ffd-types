@@ -170,5 +170,5 @@ export interface WaterImpact extends GenericImpact {
 
 export interface ID {
   registry: string;
-  id: number;
+  id: string;
 }
