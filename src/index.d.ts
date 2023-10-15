@@ -72,8 +72,7 @@ export interface Price {
 
 export interface GenericInputInstance {
   instance: UrlOr<ProductInstance>;
-  /* x 100 (g|ml) */
-  quantity: number;
+  quantity: number; // g|ml
 }
 export type LocalInputInstance = GenericInputInstance;
 
@@ -106,6 +105,7 @@ export interface FoodInstance {
   bio: boolean;
   grade?: string;
   size?: string;
+  quantity: number; // g|ml
   process?: Process;
 }
 
@@ -115,6 +115,7 @@ export interface CartridgeInstance {
   bio: boolean;
   grade: string;
   size: string;
+  quantity: number;
 }
 
 export interface FallbackFoodNutrient {
