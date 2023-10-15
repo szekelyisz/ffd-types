@@ -97,7 +97,7 @@ export type ProductInstance = FoodInstance | CartridgeInstance;
 export interface FoodInstance {
   category: "food";
   type: string;
-  iDs?: IDs;
+  iDs?: ID[];
   nutrients?: FallbackFoodNutrient[];
   ownerId?: string;
   expiryDate?: number;
@@ -120,7 +120,7 @@ export interface CartridgeInstance {
 
 export interface FallbackFoodNutrient {
   amount: number;
-  iDs: IDs;
+  iD: ID;
 }
 
 export interface MachineInstance {
@@ -168,7 +168,7 @@ export interface WaterImpact extends GenericImpact {
   category: "water";
 }
 
-export interface IDs {
+export interface ID {
   registry: string;
   id: number;
 }
