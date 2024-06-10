@@ -74,9 +74,12 @@ export interface GenericInputInstance {
   instance: UrlOr<ProductInstance>;
   quantity: number; // g|ml
 }
-export type LocalInputInstance = GenericInputInstance;
+export interface LocalInputInstance extends GenericInputInstance {
+  type: "local";
+}
 
 export interface TransportedInputInstance extends GenericInputInstance {
+  type: "transported";
   transport: Transport;
 }
 
