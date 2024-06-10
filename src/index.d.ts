@@ -14,6 +14,8 @@ export interface Pokedex {
   sale: SaleProcess;
 }
 
+export type Location = GeoJSON.Point;
+
 export type Process =
   | PrintingProcess
   | MillingProcess
