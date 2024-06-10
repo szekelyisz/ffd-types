@@ -11,7 +11,7 @@ export interface Pokedex {
   contract: string;
   token: string;
   feedchainVersion: string;
-  sale: SaleProcess;
+  instance: ProductInstance;
 }
 
 export type Location = GeoJSON.Point;
