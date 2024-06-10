@@ -31,6 +31,7 @@ export interface GenericProcess {
   temperatureRange: TemperatureRange;
   inputInstances: (TransportedInputInstance | LocalInputInstance)[];
   impacts?: Impact[];
+  price?: Price;
 }
 
 export interface PrintingProcess extends GenericProcess {
