@@ -71,6 +71,7 @@ export interface HarvestProcess extends GenericProcess {
 export interface Price {
   amount: number;
   currency: string;
+  type: "budget" | "is" | "%" | "payin30days" | "payin60days";
 }
 
 export interface GenericInputInstance {
@@ -113,6 +114,7 @@ export interface FoodInstance {
   size?: string;
   quantity: number; // g|ml
   process?: Process;
+  price?: Price;
 }
 
 export interface CartridgeInstance {
