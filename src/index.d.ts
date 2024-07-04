@@ -1,6 +1,6 @@
 import { GeoJSON } from "geojson";
 
-export type UrlOr<T> = string | T | FetchError;
+export type TokenIdOr<T> = string | T | FetchError;
 
 export interface FetchError {
   errorMessage: string;
@@ -75,7 +75,7 @@ export interface Price {
 }
 
 export interface GenericInputInstance {
-  instance: UrlOr<ProductInstance>;
+  instance: TokenIdOr<ProductInstance>;
   quantity: number; // g|ml
 }
 export interface LocalInputInstance extends GenericInputInstance {
