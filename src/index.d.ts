@@ -16,6 +16,11 @@ export interface Pokedex {
 
 export type Location = GeoJSON.Point;
 
+export interface Facility {
+  label?: string;
+  location: Location;
+}
+
 export type Process =
   | PrintingProcess
   | MillingProcess
@@ -27,7 +32,7 @@ export type Process =
 export interface GenericProcess {
   timestamp: number;
   duration?: number;
-  location: GeoJSON.Point;
+  facility: Facility;
   temperatureRange: TemperatureRange;
   inputInstances: (TransportedInputInstance | LocalInputInstance)[];
   impacts?: Impact[];
