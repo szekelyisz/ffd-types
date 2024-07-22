@@ -104,32 +104,32 @@ export interface Transport {
 
 export type TransportMethod = "air" | "sea" | "land";
 
-export type ProductInstance = FoodInstance | CartridgeInstance;
-
-export interface FoodInstance {
-  category: "food";
+export interface ProductInstanceBase {
   type: string;
-  iDs?: ID[];
-  nutrients?: FallbackFoodNutrient[];
   ownerId?: string;
   expiryDate?: number;
-  format?: string;
   bio: boolean;
-  grade?: string;
-  size?: string;
-  quantity: number; // g|ml
-  process?: Process;
+  quantity: number;
   price?: Price;
 }
 
-export interface CartridgeInstance {
+export interface FoodInstance extends ProductInstanceBase {
+  category: "food";
+  iDs?: ID[];
+  nutrients?: FallbackFoodNutrient[];
+  format?: string;
+  grade?: string;
+  size?: string;
+  process?: Process;
+}
+
+export interface CartridgeInstance extends ProductInstanceBase {
   category: "cartridge";
-  ownerId: string;
-  bio: boolean;
   grade: string;
   size: string;
-  quantity: number;
 }
+
+export type ProductInstance = FoodInstance | CartridgeInstance;
 
 export interface FallbackFoodNutrient {
   amount: number;
