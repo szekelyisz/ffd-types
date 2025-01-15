@@ -77,6 +77,9 @@ export interface Price {
   amount: number;
   currency: string;
   type: "budget" | "is" | "%" | "payin30days" | "payin60days";
+  fxRates: string;
+  useDuration?: number;
+  TnC?: string;
 }
 
 export interface GenericInputInstance {
@@ -103,15 +106,6 @@ export interface Transport {
 }
 
 export type TransportMethod = "air" | "sea" | "land";
-
-export interface ProductInstanceBase {
-  type: string;
-  ownerId?: string;
-  expiryDate?: number;
-  bio: boolean;
-  quantity: number;
-  price?: Price;
-}
 
 export interface FoodInstance extends ProductInstanceBase {
   category: "food";
@@ -155,15 +149,6 @@ export interface TemperatureRange {
   max: number;
 }
 
-export interface KnowHow {
-  owner: string;
-  hash: string;
-  inputs: string;
-  outputs: string;
-  licenseFee: Price;
-  note?: string | object;
-}
-
 export interface GenericImpact {
   ownerId: string;
   format: string;
@@ -184,4 +169,68 @@ export interface WaterImpact extends GenericImpact {
 export interface ID {
   registry: string;
   id: string;
+}
+
+export interface ProductInstanceBase {
+  type: string;
+  ownerId?: string;
+  expiryDate?: number;
+  bio: boolean;
+  quantity: number;
+  price?: Price;
+  attachments?: InstanceAttachments;
+}
+
+export interface KnowHow {
+  owner: string;
+  hash: string;
+  inputs: string;
+  outputs: string;
+  licenseFee: Price;
+  note?: string | object;
+  pricePerOutputQuantity?: number;
+  tenders?: Tender[];
+  outputInstanceDefaults?: ProductInstance;
+  processingSteps?: ProcessingStep[];
+}
+
+
+export interface InstanceAttachments {
+  deliveryProcess?: string;
+  resellIF?: string;
+  warranty?: Warranty;
+}
+
+export interface Warranty {
+  when: string;
+  who: string;
+  where: string;
+}
+
+export interface Tender {
+  token?: string;
+  contract?: string;
+  pricePercentage?: number;
+  conditionalDetails?: ConditionalDetails;
+  walletAddress: string;
+  status: string;
+  attachments?: string[];
+}
+
+export interface ConditionalDetails {
+  deadline: string;
+  place: string;
+}
+
+export interface ProcessingStep {
+  readCondition?: string;
+  gs1Events?: Task[];
+  hrNeeds?: Hr;
+  inputMaterialInstances?: InputInstance[];
+  inputMachineInstances?: MachineInstance[];
+}
+
+export interface Task {
+  details?: string;
+  relativeTo?: string;
 }
