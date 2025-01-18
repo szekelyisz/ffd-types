@@ -78,8 +78,17 @@ export interface Price {
   currency: string;
   type: "budget" | "is" | "%" | "payin30days" | "payin60days";
   fxRates: string;
-  useDuration?: number;
-  TnC?: string;
+  useDuration: number;
+  TnC: string;
+  deliveryProcess: string;
+  resellIF: string;
+  warranty?: Warranty;
+}
+
+export interface Warranty {
+  period: string;
+  if-then: string;
+  where: string;
 }
 
 export interface GenericInputInstance {
@@ -140,6 +149,7 @@ export interface MachineInstance {
 }
 
 export interface Hr {
+  skills: string;
   tasks: string;
   assignee: string;
 }
@@ -194,43 +204,21 @@ export interface KnowHow {
   processingSteps?: ProcessingStep[];
 }
 
-
-export interface InstanceAttachments {
-  deliveryProcess?: string;
-  resellIF?: string;
-  warranty?: Warranty;
-}
-
-export interface Warranty {
-  when: string;
-  who: string;
-  where: string;
-}
-
 export interface Tender {
-  token?: string;
-  contract?: string;
-  pricePercentage?: number;
-  conditionalDetails?: ConditionalDetails;
-  walletAddress: string;
+  provider: string;
   status: string;
-  attachments?: string[];
-}
-
-export interface ConditionalDetails {
+  price: Price;
   deadline: string;
   place: string;
+  furtherConditions: string[];
+  notes: string;
 }
 
 export interface ProcessingStep {
   readCondition?: string;
-  gs1Events?: Task[];
-  hrNeeds?: Hr;
+  bizStep: string; // GS1 EPCIS2 Business step (e.g., "processing", "packing")
+  hrNeeds?: Hr[];
   inputMaterialInstances?: InputInstance[];
   inputMachineInstances?: MachineInstance[];
-}
-
-export interface Task {
-  details?: string;
-  relativeTo?: string;
+  notes: string;
 }
