@@ -8,9 +8,7 @@ export interface FetchError {
 
 export interface Pokedex {
   description: string;
-  contract: string;
-  token: string;
-  feedchainVersion: string;
+  ProtocolVersion: string;
   instance: ProductInstance;
 }
 
@@ -193,15 +191,12 @@ export interface ProductInstanceBase {
 
 export interface KnowHow {
   owner: string;
-  hash: string;
-  inputs: string;
-  outputs: string;
   licenseFee: Price;
-  note?: string | object;
   pricePerOutputQuantity?: number;
   tenders?: Tender[];
   outputInstanceDefaults?: ProductInstance;
   processingSteps?: ProcessingStep[];
+  notes: string | object;
 }
 
 export interface Tender {
