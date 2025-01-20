@@ -31,7 +31,6 @@ export interface GenericProcess {
   timestamp: number;
   duration?: number;
   facility: Facility;
-  temperatureRange: TemperatureRange;
   inputInstances: (TransportedInputInstance | LocalInputInstance)[];
   impacts?: Impact[];
   price?: Price;
@@ -39,7 +38,6 @@ export interface GenericProcess {
 
 export interface PrintingProcess extends GenericProcess {
   type: "printing";
-  machineInstance: MachineInstance;
   knowHow: KnowHow;
   shape: string /* URL */;
 }
@@ -47,18 +45,15 @@ export interface PrintingProcess extends GenericProcess {
 export interface MillingProcess extends GenericProcess {
   type: "milling";
   knowHow: KnowHow;
-  machineInstance: MachineInstance;
 }
 
 export interface FreezeDryingProcess extends GenericProcess {
   type: "freezedrying";
   knowHow: KnowHow;
-  machineInstance: MachineInstance;
 }
 
 export interface BlendingProcess extends GenericProcess {
   type: "blending";
-  machineInstance: MachineInstance;
   knowHow: KnowHow;
 }
 
@@ -115,7 +110,7 @@ export interface Transport {
 export type TransportMethod = "air" | "sea" | "land";
 
 export interface FoodInstance extends ProductInstanceBase {
-  category: "food";
+  category: "biologic";
   iDs?: ID[];
   nutrients?: FallbackFoodNutrient[];
   format?: string;
@@ -124,13 +119,13 @@ export interface FoodInstance extends ProductInstanceBase {
   process?: Process;
 }
 
-export interface CartridgeInstance extends ProductInstanceBase {
-  category: "cartridge";
+export interface ObjectInstance extends ProductInstanceBase {
+  category: "object";
   grade: string;
   size: string;
 }
 
-export type ProductInstance = FoodInstance | CartridgeInstance;
+export type ProductInstance = FoodInstance | ObjectInstance;
 
 export interface FallbackFoodNutrient {
   amount: number;
@@ -142,7 +137,6 @@ export interface MachineInstance {
   ownerId: string;
   quantity: number;
   size: string;
-  hr: Hr;
   providerSDomain: string;
 }
 
@@ -213,7 +207,8 @@ export interface ProcessingStep {
   readCondition?: string;
   bizStep: string; // GS1 EPCIS2 Business step (e.g., "processing", "packing")
   hrNeeds?: Hr[];
+  temperatureRange: TemperatureRange;
   inputMaterialInstances?: InputInstance[];
-  inputMachineInstances?: MachineInstance[];
+  UsedMachineInstances?: MachineInstance[];
   notes: string;
 }
