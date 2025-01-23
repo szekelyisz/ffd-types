@@ -1,4 +1,4 @@
-import { GeoJSON } from "geojson";
+import { type GeoJSON } from "geojson";
 
 export type TokenIdOr<T> = string | T | FetchError;
 
@@ -6,12 +6,14 @@ export interface FetchError {
   errorMessage: string;
 }
 
+export type Priced<T> = T & { price: Price };
+
 export interface Pokedex {
   description: string;
   contract: string;
   token: string;
   feedchainVersion: string;
-  instance: ProductInstance;
+  instance: Priced<ProductInstance>;
 }
 
 export type Location = GeoJSON.Point;
@@ -64,9 +66,8 @@ export interface BlendingProcess extends GenericProcess {
   knowHow: KnowHow;
 }
 
-export interface SaleProcess extends GenericProcess {
+export interface SaleProcess extends Priced<GenericProcess> {
   type: "sale";
-  price: Price;
 }
 
 export interface HarvestProcess extends GenericProcess {
@@ -110,7 +111,6 @@ export interface ProductInstanceBase {
   expiryDate?: number;
   bio: boolean;
   quantity: number;
-  price?: Price;
 }
 
 export interface FoodInstance extends ProductInstanceBase {
