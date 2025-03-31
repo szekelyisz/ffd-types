@@ -16,7 +16,7 @@ export interface Pokedex {
 
 export type Location = GeoJSON.Point;
 
-export interface Facility {
+export interface Site {
   label?: string;
   location: Location;
 }
@@ -32,7 +32,7 @@ export type Process =
 export interface GenericProcess {
   timestamp: number;
   duration?: number;
-  facility: Facility;
+  site: Site;
   temperatureRange: TemperatureRange;
   inputInstances: (TransportedInputInstance | LocalInputInstance)[];
   impacts?: Impact[];
