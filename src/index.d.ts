@@ -70,6 +70,7 @@ export interface SaleProcess extends Priced<GenericProcess> {
 
 export interface HarvestProcess extends GenericProcess {
   type: "harvest";
+  machineInstance: MachineInstance;
 }
 
 export interface Price {
