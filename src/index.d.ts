@@ -2,11 +2,7 @@ import { type GeoJSON } from "geojson";
 
 export type TokenId = `0x${string}`;
 
-export type TokenIdOr<T> = TokenId | (T & { _tokenId?: TokenId }) | FetchError;
-
-export interface FetchError {
-  errorMessage: string;
-}
+export type TokenIdOr<T> = TokenId | (T & { _tokenId?: TokenId });
 
 export type Priced<T> = T & { price: Price };
 
