@@ -81,6 +81,7 @@ export interface Price {
 
 export interface GenericInputInstance {
   instance: TokenIdOr<ProductInstance>;
+  priceShare: number;
   quantity: number; // g|ml
 }
 export interface LocalInputInstance extends GenericInputInstance {
